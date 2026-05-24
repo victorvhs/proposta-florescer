@@ -5,52 +5,333 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposta de Ensaio: Florescer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap"
         rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'brand-dark': '#2c2925',
-                        'brand-light': '#fdfbf7',
-                        'brand-accent': '#c28b4e',
-                        'brand-floral': '#9d4b6c'
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['Lato', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        body {
-            background-color: #fdfbf7;
-            color: #2c2925;
-            -webkit-font-smoothing: antialiased;
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f0f5f0;
+            color: #2c2925;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
+        }
+
+        ::selection {
+            background-color: #c28b4e;
+            color: #ffffff;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .skip-link:focus {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            z-index: 50;
+            background-color: #2c2925;
+            color: #fdfbf7;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            width: auto;
+            height: auto;
+            margin: 0;
+            overflow: visible;
+            clip: auto;
+            white-space: normal;
+            text-decoration: none;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.75);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent, #f0f5f0);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-family: 'Lato', sans-serif;
+            color: #fdfbf7;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #fdfbf7;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+
+        .hero-description {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: #fdfbf7;
+            max-width: 42rem;
+            margin: 0 auto;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Intro */
+        .section-intro {
+            max-width: 56rem;
+            margin: 0 auto;
+            padding: 6rem 1.5rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            margin-bottom: 2rem;
+            color: #2c2925;
+        }
+
+        .divider {
+            width: 4rem;
+            height: 1px;
+            background-color: #c28b4e;
+            margin: 0 auto 2rem auto;
+        }
+
+        .text-body {
+            font-size: 1.125rem;
+            line-height: 1.625;
+            color: #374151;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Moodboard */
+        .section-moodboard {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .moodboard-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.875rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #2c2925;
+        }
+
+        .moodboard-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .moodboard-item {
+            position: relative;
+        }
+
+        .moodboard-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .moodboard-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        }
+
+        .moodboard-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .moodboard-overlay p {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+        }
+
+        /* Atmosphere */
+        .section-atmosphere {
+            background-color: #e2ece2;
+            padding: 6rem 0;
+            margin-top: 3rem;
+        }
+
+        .atmosphere-container {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .atmosphere-image {
+            width: 100%;
+        }
+
+        .atmosphere-image .blur-edge {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .atmosphere-content {
+            width: 100%;
+        }
+
+        .atmosphere-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+            color: #2c2925;
+        }
+
+        .atmosphere-content p {
+            color: #374151;
+            line-height: 1.625;
+            margin-bottom: 2rem;
+        }
+
+        .atmosphere-content h3 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #c28b4e;
+            margin-bottom: 1rem;
+        }
+
+        .palette {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ffffff;
+            flex-shrink: 0;
+        }
+
+        .element-list {
+            list-style-type: disc;
+            list-style-position: inside;
+            color: #374151;
+        }
+
+        .element-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 6rem 1.5rem;
+            background-color: #2c2925;
+            color: #fdfbf7;
+        }
+
+        .footer h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer p {
+            max-width: 42rem;
+            margin: 0 auto;
+            font-weight: 300;
+            color: #d1d5db;
+            margin-bottom: 2.5rem;
+            font-size: 1.125rem;
+        }
+
+        .footer-credit {
+            margin-top: 4rem;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+
+        /* Utilities */
         .fade-in {
             animation: fadeIn 1.5s ease-in forwards;
             opacity: 0;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .delay-1 {
@@ -70,34 +351,118 @@
             filter: brightness(1.1);
         }
 
+        .blur-edge {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2%;
+        }
+
+        .blur-edge::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            box-shadow: inset 0 0 30px 20px rgba(240, 245, 240, 0.65);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+
+            .hero-description {
+                font-size: 1.5rem;
+            }
+
+            .moodboard-grid {
+                grid-template-columns: repeat(12, 1fr);
+            }
+
+            .moodboard-item.span-7 {
+                grid-column: span 7;
+            }
+
+            .moodboard-item.span-4 {
+                grid-column: span 4;
+            }
+
+            .moodboard-item.span-6 {
+                grid-column: span 6;
+            }
+
+            .moodboard-overlay {
+                padding: 1.5rem;
+            }
+
+            .moodboard-overlay h3 {
+                font-size: 1.25rem;
+                margin-bottom: 0.25rem;
+            }
+
+            .moodboard-overlay p {
+                font-size: 0.875rem;
+            }
+
+            .atmosphere-container {
+                flex-direction: row;
+            }
+
+            .atmosphere-image {
+                width: 50%;
+            }
+
+            .atmosphere-content {
+                width: 50%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-title {
+                font-size: 6rem;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .fade-in {
                 animation: none;
                 opacity: 1;
             }
         }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
-<body class="font-sans selection:bg-brand-accent selection:text-white">
+<body>
 
-    <a href="#conteudo-principal" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-brand-dark focus:text-brand-light focus:px-4 focus:py-2 focus:rounded">
+    <a href="#conteudo-principal" class="skip-link">
         Pular para o conteúdo principal
     </a>
 
     <!-- HERO SECTION -->
-    <header class="relative w-full h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="Exemplo.webp" alt=""
-                class="w-full h-full object-cover object-center filter brightness-75">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#fdfbf7]"></div>
+    <header class="hero">
+        <div class="hero-bg">
+            <img src="Exemplo.webp" alt="">
+            <div class="hero-overlay"></div>
         </div>
 
-        <div class="relative z-10 text-center px-6 fade-in">
-            <p class="font-sans text-brand-light tracking-[0.2em] uppercase text-sm mb-4">Proposta de Fotografia</p>
-            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-brand-light mb-6 drop-shadow-lg">Pétalas &
-                Raízes</h1>
-            <p class="font-serif italic text-xl md:text-2xl text-brand-light max-w-2xl mx-auto drop-shadow-md">
+        <div class="hero-content fade-in">
+            <p class="hero-subtitle">Proposta de Fotografia</p>
+            <h1 class="hero-title">Pétalas & Raízes</h1>
+            <p class="hero-description">
                 A beleza sublime da mulher negra em simbiose com a natureza.
             </p>
         </div>
@@ -105,137 +470,138 @@
 
     <main id="conteudo-principal">
 
-    <!-- INTRO/CONCEPT SECTION -->
-    <section class="max-w-4xl mx-auto px-6 py-24 text-center fade-in delay-1">
-        <h2 class="font-serif text-4xl mb-8 text-brand-dark">O Conceito</h2>
-        <div class="w-16 h-[1px] bg-brand-accent mx-auto mb-8"></div>
-        <p class="text-lg leading-relaxed text-gray-700 mb-6">
-            Este ensaio fotográfico tem como objetivo celebrar a magnitude, a diversidade e a essência da mulher negra.
-            Utilizando elementos da natureza — especificamente texturas florais e folhagens — buscamos criar um
-            contraste poético entre a força da melanina e a delicadeza das pétalas.
-        </p>
-        <p class="text-lg leading-relaxed text-gray-700">
-            A direção criativa foca em três pilares fundamentais: <strong>Alegria & Carisma</strong> (sorrisos abertos,
-            girassóis, luz vibrante), <strong>Sensualidade & Mistério</strong> (olhares profundos, sombras projetadas,
-            pele iluminada) e a <strong>Conexão Eterna</strong> com a terra (tons terrosos, texturas naturais).
-        </p>
-    </section>
+        <!-- INTRO/CONCEPT SECTION -->
+        <section class="section-intro fade-in delay-1">
+            <h2 class="section-title">O Conceito</h2>
+            <div class="divider"></div>
+            <p class="text-body">
+                Este ensaio fotográfico tem como objetivo celebrar a magnitude, a diversidade e a essência da mulher
+                negra.
+                Utilizando elementos da natureza — especificamente texturas florais e folhagens — buscamos criar um
+                contraste poético entre a força da melanina e a delicadeza das pétalas.
+            </p>
+            <p class="text-body">
+                A direção criativa foca em três pilares fundamentais: <strong>Alegria & Carisma</strong> (sorrisos
+                abertos,
+                girassóis, luz vibrante), <strong>Sensualidade & Mistério</strong> (olhares profundos, sombras
+                projetadas,
+                pele iluminada) e a <strong>Conexão Eterna</strong> com a terra (tons terrosos, texturas naturais).
+            </p>
+        </section>
 
-    <!-- MOODBOARD GRID -->
-    <section class="max-w-7xl mx-auto px-6 py-12">
-        <h2 class="font-serif text-3xl mb-12 text-center text-brand-dark">Direção Visual & Moodboard</h2>
+        <!-- MOODBOARD GRID -->
+        <section class="section-moodboard">
+            <h2 class="moodboard-title">Direção Visual & Moodboard</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <div class="moodboard-grid">
 
-            <!-- Alegria & Carisma -->
-            <div class="col-span-1 md:col-span-7 group relative overflow-hidden rounded-sm h-[500px]">
-                <img src="ReactNativeBlobUtilTmp_bnqcuh7vnyilq8abyyel7o.jpeg" alt="Alegria com Girassol"
-                    class="w-full h-full object-cover image-hover">
-                <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 class="font-serif text-white text-2xl mb-2">Alegria Pura</h3>
-                    <p class="text-white/80 font-light">Luzes abertas, carisma contagiante e o frescor dos girassóis.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Sensualidade e Luz -->
-            <div class="col-span-1 md:col-span-4 group relative overflow-hidden rounded-sm h-[600px]">
-                <img src="ReactNativeBlobUtilTmp_u92an742vs5nny0ksy9lm.jpeg" alt="Sensualidade e Pele"
-                    class="w-full h-full object-cover image-hover">
-                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 class="font-serif text-white text-xl mb-1">Sensualidade Poética</h3>
-                    <p class="text-white/80 text-sm font-light">Pele dourada, poses orgânicas e olhares magnéticos.</p>
-                </div>
-            </div>
-
-            <!-- Força e Carisma -->
-            <div class="col-span-1 md:col-span-4 group relative overflow-hidden rounded-sm h-[600px]">
-                <img src="ReactNativeBlobUtilTmp_er2xxvmy54fw3hr2kclaxj.jpeg" alt="Força e Tranças"
-                    class="w-full h-full object-cover image-hover">
-                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 class="font-serif text-white text-xl mb-1">Poder & Presença</h3>
-                    <p class="text-white/80 text-sm font-light">O empoderamento através do enquadramento clássico e
-                        iluminação dura.</p>
-                </div>
-            </div>
-
-            <!-- Delicadeza Floral -->
-            <div class="col-span-1 md:col-span-4 group relative overflow-hidden rounded-sm h-[600px]">
-                <img src="ReactNativeBlobUtilTmp_u791phx98dqv1ohrv1swxi.jpeg" alt="Flores em harmonia"
-                    class="w-full h-full object-cover object-top image-hover">
-                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 class="font-serif text-white text-xl mb-1">Simbiose</h3>
-                    <p class="text-white/80 text-sm font-light">A mulher como extensão da flor, a flor como extensão da
-                        mulher.</p>
-                </div>
-            </div>
-
-            <!-- Cores Vibrantes e Expressão -->
-            <div class="col-span-1 md:col-span-6 group relative overflow-hidden rounded-sm h-[400px]">
-                <img src="ReactNativeBlobUtilTmp_9yks3br0rlkm0gz2mt9v.jpeg" alt="Beleza Vibrante"
-                    class="w-full h-full object-cover object-top image-hover">
-                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 class="font-serif text-white text-xl mb-1">Vibrância</h3>
-                    <p class="text-white/80 text-sm font-light">Maquiagem artística contrastando com os tons florais.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- STYLING & PALETTE -->
-    <section class="bg-[#f0ece3] py-24 mt-12">
-        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
-            <div class="w-full md:w-1/2">
-                <img src="Exemplo.webp" alt="Referência de Luz"
-                    class="rounded-t-full shadow-xl w-full h-[600px] object-cover">
-            </div>
-            <div class="w-full md:w-1/2">
-                <h2 class="font-serif text-4xl mb-6 text-brand-dark">A Atmosfera</h2>
-                <p class="text-gray-700 leading-relaxed mb-8">
-                    A fotografia fará uso abundante de luz natural, buscando a famosa <em>"Golden Hour"</em> (hora
-                    dourada) para realçar os tons quentes da pele negra e criar volumes deslumbrantes no cabelo crespo e
-                    cacheado.
-                </p>
-
-                <h3 class="font-sans font-bold text-sm uppercase tracking-widest text-brand-accent mb-4">Paleta de Cores
-                </h3>
-                <div class="flex gap-4 mb-8">
-                    <div class="w-12 h-12 rounded-full bg-[#E5A93D] shadow-md border-2 border-white" role="img" aria-label="Girassol - Amarelo dourado (#E5A93D)" title="Girassol">
-                    </div>
-                    <div class="w-12 h-12 rounded-full bg-[#682A3A] shadow-md border-2 border-white"
-                        role="img" aria-label="Floral Escuro - Vinho profundo (#682A3A)" title="Floral Escuro"></div>
-                    <div class="w-12 h-12 rounded-full bg-[#5C4033] shadow-md border-2 border-white"
-                        role="img" aria-label="Pele e Terra - Marrom terroso (#5C4033)" title="Pele e Terra"></div>
-                    <div class="w-12 h-12 rounded-full bg-[#3B5323] shadow-md border-2 border-white"
-                        role="img" aria-label="Folhagem Profunda - Verde musgo (#3B5323)" title="Folhagem Profunda"></div>
-                    <div class="w-12 h-12 rounded-full bg-[#F3EFE9] shadow-md border-2 border-white"
-                        role="img" aria-label="Luz Suave - Creme claro (#F3EFE9)" title="Luz Suave">
+                <!-- Alegria & Carisma -->
+                <div class="moodboard-item span-7 blur-edge" style="height: 500px;">
+                    <img src="ReactNativeBlobUtilTmp_bnqcuh7vnyilq8abyyel7o.jpeg" alt="Alegria com Girassol"
+                        class="image-hover">
+                    <div class="moodboard-overlay">
+                        <h3>Alegria Pura</h3>
+                        <p>Luzes abertas, carisma contagiante e o frescor dos girassóis.</p>
                     </div>
                 </div>
 
-                <h3 class="font-sans font-bold text-sm uppercase tracking-widest text-brand-accent mb-4">Elementos Chave
-                </h3>
-                <ul class="list-disc list-inside text-gray-700 space-y-2">
-                    <li>Flores em escala macro (Girassóis, Antúrios Brancos, Estátices).</li>
-                    <li>Maquiagem que varia do natural iluminado (pele <i>glow</i>) a pontos de cor nos olhos.</li>
-                    <li>Figurino minimalista (tons brancos, crus e linhos) para não competir com a beleza natural.</li>
-                </ul>
+                <!-- Sensualidade e Luz -->
+                <div class="moodboard-item span-4 blur-edge" style="height: 600px;">
+                    <img src="ReactNativeBlobUtilTmp_u92an742vs5nny0ksy9lm.jpeg" alt="Sensualidade e Pele"
+                        class="image-hover">
+                    <div class="moodboard-overlay">
+                        <h3>Sensualidade Poética</h3>
+                        <p>Pele dourada, poses orgânicas e olhares magnéticos.</p>
+                    </div>
+                </div>
+
+                <!-- Força e Carisma -->
+                <div class="moodboard-item span-4 blur-edge" style="height: 600px;">
+                    <img src="ReactNativeBlobUtilTmp_er2xxvmy54fw3hr2kclaxj.jpeg" alt="Força e Tranças"
+                        class="image-hover">
+                    <div class="moodboard-overlay">
+                        <h3>Poder & Presença</h3>
+                        <p>O empoderamento através do enquadramento clássico e iluminação dura.</p>
+                    </div>
+                </div>
+
+                <!-- Delicadeza Floral -->
+                <div class="moodboard-item span-4 blur-edge" style="height: 600px;">
+                    <img src="ReactNativeBlobUtilTmp_u791phx98dqv1ohrv1swxi.jpeg" alt="Flores em harmonia"
+                        class="image-hover" style="object-position: top;">
+                    <div class="moodboard-overlay">
+                        <h3>Simbiose</h3>
+                        <p>A mulher como extensão da flor, a flor como extensão da mulher.</p>
+                    </div>
+                </div>
+
+                <!-- Cores Vibrantes e Expressão -->
+                <div class="moodboard-item span-6 blur-edge" style="height: 400px;">
+                    <img src="ReactNativeBlobUtilTmp_9yks3br0rlkm0gz2mt9v.jpeg" alt="Beleza Vibrante"
+                        class="image-hover" style="object-position: top;">
+                    <div class="moodboard-overlay">
+                        <h3>Vibrância</h3>
+                        <p>Maquiagem artística contrastando com os tons florais.</p>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- STYLING & PALETTE -->
+        <section class="section-atmosphere">
+            <div class="atmosphere-container">
+                <div class="atmosphere-image">
+                    <div class="blur-edge">
+                        <img src="Exemplo.webp" alt="Referência de Luz"
+                            style="width: 100%; height: 600px; object-fit: cover;">
+                    </div>
+                </div>
+                <div class="atmosphere-content">
+                    <h2>A Atmosfera</h2>
+                    <p>
+                        A fotografia fará uso abundante de luz natural, buscando a famosa <em>"Golden Hour"</em> (hora
+                        dourada) para realçar os tons quentes da pele negra e criar volumes deslumbrantes no cabelo
+                        crespo e cacheado.
+                    </p>
+
+                    <h3>Paleta de Cores</h3>
+                    <div class="palette">
+                        <div class="color-swatch" style="background-color: #E5A93D;" role="img"
+                            aria-label="Girassol - Amarelo dourado (#E5A93D)" title="Girassol">
+                        </div>
+                        <div class="color-swatch" style="background-color: #682A3A;" role="img"
+                            aria-label="Floral Escuro - Vinho profundo (#682A3A)" title="Floral Escuro"></div>
+                        <div class="color-swatch" style="background-color: #5C4033;" role="img"
+                            aria-label="Pele e Terra - Marrom terroso (#5C4033)" title="Pele e Terra"></div>
+                        <div class="color-swatch" style="background-color: #3B5323;" role="img"
+                            aria-label="Folhagem Profunda - Verde musgo (#3B5323)" title="Folhagem Profunda"></div>
+                        <div class="color-swatch" style="background-color: #F3EFE9;" role="img"
+                            aria-label="Luz Suave - Creme claro (#F3EFE9)" title="Luz Suave">
+                        </div>
+                    </div>
+
+                    <h3>Elementos Chave</h3>
+                    <ul class="element-list">
+                        <li>Flores em escala macro (Girassóis, Antúrios Brancos, Estátices).</li>
+                        <li>Maquiagem que varia do natural iluminado (pele <i>glow</i>) a pontos de cor nos olhos.</li>
+                        <li>Figurino minimalista (tons brancos, crus e linhos) para não competir com a beleza natural.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
     </main>
 
     <!-- CALL TO ACTION / FOOTER -->
-    <footer class="text-center py-24 px-6 bg-brand-dark text-brand-light">
-        <h2 class="font-serif text-4xl mb-6">Vamos Florescer?</h2>
-        <p class="max-w-2xl mx-auto font-light text-gray-300 mb-10 text-lg">
+    <footer class="footer">
+        <h2>Vamos Florescer?</h2>
+        <p>
             Esta é mais do que uma sessão de fotos; é uma exaltação visual da força, alegria e delicadeza feminina negra
             conectada à terra. Estou à disposição para ajustarmos detalhes e transformarmos essa visão em realidade.
         </p>
-        <p class="mt-16 font-serif italic text-sm text-gray-400">Criado com olhar clínico e criatividade para você.</p>
+        <p class="footer-credit">Criado com olhar clínico e criatividade para você.</p>
     </footer>
 
 </body>
