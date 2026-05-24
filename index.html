@@ -31,7 +31,7 @@
     </script>
     <style>
         body {
-            background-color: #f0f5f0;
+            background-color: #deecde;
             color: #2c2925;
             -webkit-font-smoothing: antialiased;
         }
@@ -70,6 +70,22 @@
             filter: brightness(1.1);
         }
 
+        .blur-edge {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2%;
+        }
+
+        .blur-edge::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            box-shadow: inset 0 0 30px 20px rgba(240, 245, 240, 0.65);
+            pointer-events: none;
+            z-index: 10;
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .fade-in {
                 animation: none;
@@ -81,15 +97,15 @@
 
 <body class="font-sans selection:bg-brand-accent selection:text-white">
 
-    <a href="#conteudo-principal" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-brand-dark focus:text-brand-light focus:px-4 focus:py-2 focus:rounded">
+    <a href="#conteudo-principal"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-brand-dark focus:text-brand-light focus:px-4 focus:py-2 focus:rounded">
         Pular para o conteúdo principal
     </a>
 
     <!-- HERO SECTION -->
     <header class="relative w-full h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="Exemplo.webp" alt=""
-                class="w-full h-full object-cover object-center filter brightness-75">
+            <img src="Exemplo.webp" alt="" class="w-full h-full object-cover object-center filter brightness-75">
             <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#f0f5f0]"></div>
         </div>
 
@@ -105,126 +121,140 @@
 
     <main id="conteudo-principal">
 
-    <!-- INTRO/CONCEPT SECTION -->
-    <section class="max-w-4xl mx-auto px-6 py-24 text-center fade-in delay-1">
-        <h2 class="font-serif text-4xl mb-8 text-brand-dark">O Conceito</h2>
-        <div class="w-16 h-[1px] bg-brand-accent mx-auto mb-8"></div>
-        <p class="text-lg leading-relaxed text-gray-700 mb-6">
-            Este ensaio fotográfico tem como objetivo celebrar a magnitude, a diversidade e a essência da mulher negra.
-            Utilizando elementos da natureza — especificamente texturas florais e folhagens — buscamos criar um
-            contraste poético entre a força da melanina e a delicadeza das pétalas.
-        </p>
-        <p class="text-lg leading-relaxed text-gray-700">
-            A direção criativa foca em três pilares fundamentais: <strong>Alegria & Carisma</strong> (sorrisos abertos,
-            girassóis, luz vibrante), <strong>Sensualidade & Mistério</strong> (olhares profundos, sombras projetadas,
-            pele iluminada) e a <strong>Conexão Eterna</strong> com a terra (tons terrosos, texturas naturais).
-        </p>
-    </section>
+        <!-- INTRO/CONCEPT SECTION -->
+        <section class="max-w-4xl mx-auto px-6 py-24 text-center fade-in delay-1">
+            <h2 class="font-serif text-4xl mb-8 text-brand-dark">O Conceito</h2>
+            <div class="w-16 h-[1px] bg-brand-accent mx-auto mb-8"></div>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                Este ensaio fotográfico tem como objetivo celebrar a magnitude, a diversidade e a essência da mulher
+                negra.
+                Utilizando elementos da natureza — especificamente texturas florais e folhagens — buscamos criar um
+                contraste poético entre a força da melanina e a delicadeza das pétalas.
+            </p>
+            <p class="text-lg leading-relaxed text-gray-700">
+                A direção criativa foca em três pilares fundamentais: <strong>Alegria & Carisma</strong> (sorrisos
+                abertos,
+                girassóis, luz vibrante), <strong>Sensualidade & Mistério</strong> (olhares profundos, sombras
+                projetadas,
+                pele iluminada) e a <strong>Conexão Eterna</strong> com a terra (tons terrosos, texturas naturais).
+            </p>
+        </section>
 
-    <!-- MOODBOARD GRID -->
-    <section class="max-w-7xl mx-auto px-6 py-12">
-        <h2 class="font-serif text-3xl mb-12 text-center text-brand-dark">Direção Visual & Moodboard</h2>
+        <!-- MOODBOARD GRID -->
+        <section class="max-w-7xl mx-auto px-6 py-12">
+            <h2 class="font-serif text-3xl mb-12 text-center text-brand-dark">Direção Visual & Moodboard</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 
-            <!-- Alegria & Carisma -->
-            <div class="col-span-1 md:col-span-7 group relative overflow-hidden rounded-sm h-[500px]">
-                <img src="ReactNativeBlobUtilTmp_bnqcuh7vnyilq8abyyel7o.jpeg" alt="Alegria com Girassol"
-                    class="w-full h-full object-cover image-hover">
-                <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 class="font-serif text-white text-2xl mb-2">Alegria Pura</h3>
-                    <p class="text-white/80 font-light">Luzes abertas, carisma contagiante e o frescor dos girassóis.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Sensualidade e Luz -->
-            <div class="col-span-1 md:col-span-4 group relative overflow-hidden rounded-sm h-[600px]">
-                <img src="ReactNativeBlobUtilTmp_u92an742vs5nny0ksy9lm.jpeg" alt="Sensualidade e Pele"
-                    class="w-full h-full object-cover image-hover">
-                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 class="font-serif text-white text-xl mb-1">Sensualidade Poética</h3>
-                    <p class="text-white/80 text-sm font-light">Pele dourada, poses orgânicas e olhares magnéticos.</p>
-                </div>
-            </div>
-
-            <!-- Força e Carisma -->
-            <div class="col-span-1 md:col-span-4 group relative overflow-hidden rounded-sm h-[600px]">
-                <img src="ReactNativeBlobUtilTmp_er2xxvmy54fw3hr2kclaxj.jpeg" alt="Força e Tranças"
-                    class="w-full h-full object-cover image-hover">
-                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 class="font-serif text-white text-xl mb-1">Poder & Presença</h3>
-                    <p class="text-white/80 text-sm font-light">O empoderamento através do enquadramento clássico e
-                        iluminação dura.</p>
-                </div>
-            </div>
-
-            <!-- Delicadeza Floral -->
-            <div class="col-span-1 md:col-span-4 group relative overflow-hidden rounded-sm h-[600px]">
-                <img src="ReactNativeBlobUtilTmp_u791phx98dqv1ohrv1swxi.jpeg" alt="Flores em harmonia"
-                    class="w-full h-full object-cover object-top image-hover">
-                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 class="font-serif text-white text-xl mb-1">Simbiose</h3>
-                    <p class="text-white/80 text-sm font-light">A mulher como extensão da flor, a flor como extensão da
-                        mulher.</p>
-                </div>
-            </div>
-
-            <!-- Cores Vibrantes e Expressão -->
-            <div class="col-span-1 md:col-span-6 group relative overflow-hidden rounded-sm h-[400px]">
-                <img src="ReactNativeBlobUtilTmp_9yks3br0rlkm0gz2mt9v.jpeg" alt="Beleza Vibrante"
-                    class="w-full h-full object-cover object-top image-hover">
-                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 class="font-serif text-white text-xl mb-1">Vibrância</h3>
-                    <p class="text-white/80 text-sm font-light">Maquiagem artística contrastando com os tons florais.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- STYLING & PALETTE -->
-    <section class="bg-[#e2ece2] py-24 mt-12">
-        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
-            <div class="w-full md:w-1/2">
-                <img src="Exemplo.webp" alt="Referência de Luz"
-                    class="rounded-t-full shadow-xl w-full h-[600px] object-cover">
-            </div>
-            <div class="w-full md:w-1/2">
-                <h2 class="font-serif text-4xl mb-6 text-brand-dark">A Atmosfera</h2>
-                <p class="text-gray-700 leading-relaxed mb-8">
-                    A fotografia fará uso abundante de luz natural, buscando a famosa <em>"Golden Hour"</em> (hora
-                    dourada) para realçar os tons quentes da pele negra e criar volumes deslumbrantes no cabelo crespo e
-                    cacheado.
-                </p>
-
-                <h3 class="font-sans font-bold text-sm uppercase tracking-widest text-brand-accent mb-4">Paleta de Cores
-                </h3>
-                <div class="flex gap-4 mb-8">
-                    <div class="w-12 h-12 rounded-full bg-[#E5A93D] shadow-md border-2 border-white" role="img" aria-label="Girassol - Amarelo dourado (#E5A93D)" title="Girassol">
-                    </div>
-                    <div class="w-12 h-12 rounded-full bg-[#682A3A] shadow-md border-2 border-white"
-                        role="img" aria-label="Floral Escuro - Vinho profundo (#682A3A)" title="Floral Escuro"></div>
-                    <div class="w-12 h-12 rounded-full bg-[#5C4033] shadow-md border-2 border-white"
-                        role="img" aria-label="Pele e Terra - Marrom terroso (#5C4033)" title="Pele e Terra"></div>
-                    <div class="w-12 h-12 rounded-full bg-[#3B5323] shadow-md border-2 border-white"
-                        role="img" aria-label="Folhagem Profunda - Verde musgo (#3B5323)" title="Folhagem Profunda"></div>
-                    <div class="w-12 h-12 rounded-full bg-[#F3EFE9] shadow-md border-2 border-white"
-                        role="img" aria-label="Luz Suave - Creme claro (#F3EFE9)" title="Luz Suave">
+                <!-- Alegria & Carisma -->
+                <div class="col-span-1 md:col-span-7 group relative blur-edge h-[500px]">
+                    <img src="ReactNativeBlobUtilTmp_bnqcuh7vnyilq8abyyel7o.jpeg" alt="Alegria com Girassol"
+                        class="w-full h-full object-cover image-hover">
+                    <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
+                        <h3 class="font-serif text-white text-2xl mb-2">Alegria Pura</h3>
+                        <p class="text-white/80 font-light">Luzes abertas, carisma contagiante e o frescor dos
+                            girassóis.
+                        </p>
                     </div>
                 </div>
 
-                <h3 class="font-sans font-bold text-sm uppercase tracking-widest text-brand-accent mb-4">Elementos Chave
-                </h3>
-                <ul class="list-disc list-inside text-gray-700 space-y-2">
-                    <li>Flores em escala macro (Girassóis, Antúrios Brancos, Estátices).</li>
-                    <li>Maquiagem que varia do natural iluminado (pele <i>glow</i>) a pontos de cor nos olhos.</li>
-                    <li>Figurino minimalista (tons brancos, crus e linhos) para não competir com a beleza natural.</li>
-                </ul>
+                <!-- Sensualidade e Luz -->
+                <div class="col-span-1 md:col-span-4 group relative blur-edge h-[600px]">
+                    <img src="ReactNativeBlobUtilTmp_u92an742vs5nny0ksy9lm.jpeg" alt="Sensualidade e Pele"
+                        class="w-full h-full object-cover image-hover">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                        <h3 class="font-serif text-white text-xl mb-1">Sensualidade Poética</h3>
+                        <p class="text-white/80 text-sm font-light">Pele dourada, poses orgânicas e olhares magnéticos.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Força e Carisma -->
+                <div class="col-span-1 md:col-span-4 group relative blur-edge h-[600px]">
+                    <img src="ReactNativeBlobUtilTmp_er2xxvmy54fw3hr2kclaxj.jpeg" alt="Força e Tranças"
+                        class="w-full h-full object-cover image-hover">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                        <h3 class="font-serif text-white text-xl mb-1">Poder & Presença</h3>
+                        <p class="text-white/80 text-sm font-light">O empoderamento através do enquadramento clássico e
+                            iluminação dura.</p>
+                    </div>
+                </div>
+
+                <!-- Delicadeza Floral -->
+                <div class="col-span-1 md:col-span-4 group relative blur-edge h-[600px]">
+                    <img src="ReactNativeBlobUtilTmp_u791phx98dqv1ohrv1swxi.jpeg" alt="Flores em harmonia"
+                        class="w-full h-full object-cover object-top image-hover">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                        <h3 class="font-serif text-white text-xl mb-1">Simbiose</h3>
+                        <p class="text-white/80 text-sm font-light">A mulher como extensão da flor, a flor como extensão
+                            da
+                            mulher.</p>
+                    </div>
+                </div>
+
+                <!-- Cores Vibrantes e Expressão -->
+                <div class="col-span-1 md:col-span-6 group relative blur-edge h-[400px]">
+                    <img src="ReactNativeBlobUtilTmp_9yks3br0rlkm0gz2mt9v.jpeg" alt="Beleza Vibrante"
+                        class="w-full h-full object-cover object-top image-hover">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                        <h3 class="font-serif text-white text-xl mb-1">Vibrância</h3>
+                        <p class="text-white/80 text-sm font-light">Maquiagem artística contrastando com os tons
+                            florais.
+                        </p>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- STYLING & PALETTE -->
+        <section class="bg-[#e2ece2] py-24 mt-12">
+            <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2">
+                    <div class="blur-edge shadow-xl">
+                        <img src="Exemplo.webp" alt="Referência de Luz"
+                            class="w-full h-[600px] object-cover">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h2 class="font-serif text-4xl mb-6 text-brand-dark">A Atmosfera</h2>
+                    <p class="text-gray-700 leading-relaxed mb-8">
+                        A fotografia fará uso abundante de luz natural, buscando a famosa <em>"Golden Hour"</em> (hora
+                        dourada) para realçar os tons quentes da pele negra e criar volumes deslumbrantes no cabelo
+                        crespo e
+                        cacheado.
+                    </p>
+
+                    <h3 class="font-sans font-bold text-sm uppercase tracking-widest text-brand-accent mb-4">Paleta de
+                        Cores
+                    </h3>
+                    <div class="flex gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-[#E5A93D] shadow-md border-2 border-white" role="img"
+                            aria-label="Girassol - Amarelo dourado (#E5A93D)" title="Girassol">
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-[#682A3A] shadow-md border-2 border-white" role="img"
+                            aria-label="Floral Escuro - Vinho profundo (#682A3A)" title="Floral Escuro"></div>
+                        <div class="w-12 h-12 rounded-full bg-[#5C4033] shadow-md border-2 border-white" role="img"
+                            aria-label="Pele e Terra - Marrom terroso (#5C4033)" title="Pele e Terra"></div>
+                        <div class="w-12 h-12 rounded-full bg-[#3B5323] shadow-md border-2 border-white" role="img"
+                            aria-label="Folhagem Profunda - Verde musgo (#3B5323)" title="Folhagem Profunda"></div>
+                        <div class="w-12 h-12 rounded-full bg-[#F3EFE9] shadow-md border-2 border-white" role="img"
+                            aria-label="Luz Suave - Creme claro (#F3EFE9)" title="Luz Suave">
+                        </div>
+                    </div>
+
+                    <h3 class="font-sans font-bold text-sm uppercase tracking-widest text-brand-accent mb-4">Elementos
+                        Chave
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Flores em escala macro (Girassóis, Antúrios Brancos, Estátices).</li>
+                        <li>Maquiagem que varia do natural iluminado (pele <i>glow</i>) a pontos de cor nos olhos.</li>
+                        <li>Figurino minimalista (tons brancos, crus e linhos) para não competir com a beleza natural.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
     </main>
 
